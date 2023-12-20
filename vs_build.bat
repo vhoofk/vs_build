@@ -372,8 +372,7 @@ if "%mode%" == "release" (
 ) else if "%mode%" == "debug" (
     
     rem /MDd  -> multithreaded debug runtime DLL, (defines _DLL, _MT and _DEBUG, links to MSCVRTD.dll)
-    rem /RTCu -> runtime error checks: uninitialized variables
-    rem /RTCs -> runtime error checks: stack frames
+    rem /RTC1 -> runtime error checks: uninitialized variables and stack frames
     rem /Od   -> turn off optimizations
 
     set cl_flags=%cl_flags% /MDd /RTC1 /Od
