@@ -346,11 +346,11 @@ rem ----------------------------------------------------------------------
 
 rem https://learn.microsoft.com/en-us/cpp/build/reference/compiling-a-c-cpp-program
 rem https://learn.microsoft.com/en-us/cpp/build/reference/c-cpp-building-reference
-
+rem https://learn.microsoft.com/en-us/cpp/build/reference/std-specify-language-standard-version
 
 rem /nologo  -> suppress startup banner
 
-set cl_flags=/nologo 
+set cl_flags=/nologo
 
 rem /FA -> generate an assembly listing file
 rem   c -> include machine code
@@ -360,6 +360,10 @@ rem   u -> utf-8
 if "%enable_assembly%" == "1" (
     set cl_flags=%cl_flags% /FAs
 )
+
+rem /std:c17 -> enable ISO C17 conformance for .c files
+
+set cl_flags=%cl_flags% /std:c17
 
 rem /Zi      -> put debug info in a seperate .pdb file  (implies /debug)
 rem /JMC     -> enable just-my-code debugging (step over non-user code)
@@ -373,7 +377,7 @@ set cl_flags=%cl_flags% /Zi /JMC /W3 /WX- /diagnostics:column /FC
 rem /experimental:external -> enable /external
 rem /external:W3  -> warning level 3 for external headers
 
-set cl_flags=%cl_flags% 
+set cl_flags=%cl_flags%
 
 if "%mode%" == "release" (
 
@@ -397,7 +401,7 @@ if "%mode%" == "release" (
     )
 
 ) else if "%mode%" == "debug" (
-    
+
     rem /MDd  -> multithreaded debug runtime DLL, (defines _DLL, _MT and _DEBUG, links to MSCVRTD.dll)
     rem /RTC1 -> runtime error checks: uninitialized variables and stack frames
     rem /Od   -> turn off optimizations
