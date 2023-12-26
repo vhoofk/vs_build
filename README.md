@@ -89,4 +89,22 @@ Example usage:
     vs_build.bat debug verbose
 
 
+To use from Vim, add the following lines to your vimrc file to
+support parsing of Visual Studio compiler messages:
+
+    set errorformat+=%f(%l):%m
+    set errorformat+=%f(%l\\,%c): %m
+
+Then when in Vim, simply remap the make command:
+
+    :set makeprg=vs_build
+
+And then to build:
+
+    :make
+
+Or optionally add arguments:
+
+    :make debug x86
+
 

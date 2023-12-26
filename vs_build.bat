@@ -115,6 +115,25 @@ rem - Build default debug target in verbose mode:
 rem
 rem     vs_build.bat debug verbose
 rem
+rem
+rem To use from Vim, add the following lines to your vimrc file to
+rem support parsing of Visual Studio compiler messages:
+rem
+rem     set errorformat+=%f(%l):%m
+rem     set errorformat+=%f(%l\\,%c): %m
+rem
+rem Then when in Vim, simply remap the make command:
+rem
+rem     :set makeprg=vs_build
+rem
+rem And then to build:
+rem
+rem     :make
+rem
+rem Or optionally add arguments:
+rem
+rem     :make debug x86
+rem
 
 
 setlocal EnableDelayedExpansion
